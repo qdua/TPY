@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>1Exp: Turquoise Pink Yellow Poster</title>
+        <title>Exp: Turquoise Pink Yellow Poster</title>
         <script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
         <style>:root
         {
@@ -23,16 +23,16 @@
         body {
             align-items: center;
             background: white;
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            overflow: hidden;
+            display: flex;  
+            font: normal 3vmin/1.5 sans-serif;
+            padding: 20vmin 0;
+            flex-direction: column;
+            gap: 10vmin; 
         }
         css-doodle {
             background: black;
             box-shadow: 0 5vh 10vh hsla(0, 0%, 0%, 0.5);
-            border: 7vmin solid black;
-            position: fixed;
+            border: 7vmin solid black; 
             z-index: 1;
             user-select: none;
             overflow: hidden;
@@ -44,27 +44,200 @@
             position: fixed;
             text-decoration: none;
         }
+
     </style>
     </head>
     <body>
-        <css-doodle click-to-update>
-            <style> 
-              @grid: 1 / 70vmin;
-              background: linear-gradient(
-                @rand(360deg),
-                @m(5, (
-                  @pick-n(#00fffc, #fffc00, #fc00ff)
-                    calc((@n - 1) * 100% / 2.5),
-                  @lp
-                    calc(@n * 100% / 5.5)
-                ))
+        
+      <style>
+        css-doodle {
+          --v1: ( 
+          @grid: 8 / 50vmin;
+          transition: .2s @r(.6s);
+          border-radius: @pick(100% 0, 0 100%);
+          will-change: transform;
+          background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+          );
+        }
+        css-doodle {
+          --v2: ( 
+          @grid: 5 / 50vmin;
+          transition: .2s @r(.6s);
+          border-radius: @pick(50%, 0) @pick(50%, 0) @pick(50%, 0) @pick(50%, 0);
+          background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+          ); 
+        }
+        
+        css-doodle {
+          --v3: (
+            @grid: 3 / 50vmin; 
+
+            clip-path: @shape(split: 120;
+              scale: .7;
+              frame: 15;
+              r: cos(t/10) ^ sin(t) ^ sin(2t);
+            );
+            transition: @r(.6s);
+            transform: rotate(@r(45, 360)deg) scale(@r(3, 10));
+            background: linear-gradient(@rand(360deg),
+              @m(5, (@pick-n(#00fffc, #fffc00, #fc00ff) calc((@n - 1) * 100% / 2.5),
+                  @lp calc(@n * 100% / 5.5))));
+            z-index: @r(1, 20);
+          );
+        }
+        css-doodle {
+          --v4: (
+            @grid: 5 / 50vmin;
+            gap: 2.5vmin;
+
+            transition: .2s @r(.6s);
+            background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+
+            @nth(1, 13, 24) {
+              background: transparent;
+              border-radius: 100%;
+              border: 2.5vmin solid hsla(@pick(59, 299, 179), 100%, 50%, 1);
+            }
+
+            ;
+
+            @nth(2, 9, 17) {
+              background-color: transparent;
+              background-image: @doodle(@grid: 5 x 1/ 100%;
+                  background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+
+                  @col(2, 4) {
+                  background: transparent;
+                }
+
+                ;
               );
-              clip-path: @shape(
-                split: 999;
-                r: cos(44t);
+            }
+
+            ;
+
+            @nth(3, 10, 23) {
+              @shape: triangle;
+              transform: scaleY(@pick(-1, 1));
+            }
+
+            ;
+
+            @nth(4, 11, 20) {
+              clip-path: @shape(split: 100;
+                  r: 1/(1-.5*sin(2t)^2)^.25;
+                );
+            }
+
+            @nth(5, 6, 19) {
+              background: linear-gradient(45deg, transparent 50%, hsla(@pick(59, 299, 179), 100%, 50%, 1) 50%);
+              transform: scaleX(@pick(-1, 1)) scaleY(@pick(-1, 1));
+            }
+
+            @nth(7, 22, 15) {
+              background: transparent;
+              border: 2.5vmin solid hsla(@pick(59, 299, 179), 100%, 50%, 1);
+            }
+
+            @nth(21) {
+              background: transparent;
+              background-image: @doodle(@grid: 1 x 5/ 100%;
+                  background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+
+                  @row(2, 4) {
+                  background: transparent;
+                }
+
+                ;
               );
-            </style>
-          </css-doodle>
+            }
+
+            @nth(16, 25) {
+              background: transparent;
+              background-image: @doodle(@grid: 2 x 2 / 100%;
+                  --bg: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+                  background-color:@var(--bg);
+                );
+            }
+          );
+        }
+        css-doodle {
+          --v5: (
+            @grid: 8 / 50vmin;
+            transition: .2s @r(.6s);
+            border-radius: @pick(100% 0, 0 100%);
+            will-change: transform;
+            background-color: hsla(@pick(59, 299, 179), 100%, 50%, 1);
+
+            @nth(odd) {
+              border-radius: 0 100%;
+            }
+
+            @nth(even) {
+              border-radius: 100% 0;
+            }
+
+            @row(1, 3, 5, 7) {
+              transform: rotate(90deg);
+            }
+          )
+        }
+        
+        css-doodle {
+          --v6: (
+            @grid: 1 / 50vmin;
+            background: linear-gradient(@rand(360deg),
+              @m(5, (@pick-n(#00fffc, #fffc00, #fc00ff) calc((@n - 1) * 100% / 2.5),
+                  @lp calc(@n * 100% / 5.5))));
+            clip-path: @shape(split: 999;
+              r: cos(44t);
+            );
+            transform: rotate(calc(@t * .004deg));
+            /**Chrome only**/
+          );
+        }
+
+        css-doodle {
+          --v9: (
+            @grid: 5 / 50vmin;
+            background: linear-gradient(@rand(360deg),
+              @m(5, (@pick-n(#00fffc, #fffc00, #fc00ff) calc((@n - 1) * 100% / 2.5),
+                  @lp calc(@n * 100% / 5.5))));
+            clip-path: @shape(split: 300;
+              scale: .35;
+              x: sin(@pick(1, 2, 3, 4)t) + cos(7t) + cos(2t) + .35;
+              y: cos(@pick(1, 2, 3, 4)t) + sin(4t) + sin(t);
+            );
+            transform: rotate(@r(360)deg) scale(@r(.1, 4)) translate(@r(0%, 100%), @r(0, 150%));
+          );
+        }
+      </style>
+      <h3>Exp: Turquoise Pink Yellow Poster 1v.</h3>
+      <css-doodle use="var(--v1)"></css-doodle>
+      <h3>Exp: Turquoise Pink Yellow Poster 2v.</h3>
+      <css-doodle use="var(--v2)"></css-doodle>
+      <h3>Exp: Turquoise Pink Yellow Poster 3v.</h3>
+      <css-doodle use="var(--v3)"></css-doodle>
+      <h3>Exp: Turquoise Pink Yellow Poster 4v.</h3>
+      <css-doodle use="var(--v4)"></css-doodle>
+      <h3>Exp: Turquoise Pink Yellow Poster 5v.</h3>
+      <css-doodle use="var(--v5)"></css-doodle>
+      <h3>Exp: Turquoise Pink Yellow Poster 6v.</h3>
+      <css-doodle use="var(--v6)"></css-doodle>
+
+
+      <h3>Exp: Turquoise Pink Yellow Poster 9v.</h3>
+      <css-doodle use="var(--v9)"></css-doodle>
+
+
+
+
+<script>
+  document.body.addEventListener("click", function (e) {
+    e.target.update && e.target.update();
+  });
+  
+</script>
     </body>
     </html>    
 
