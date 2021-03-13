@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1Exp: Turquoise Pink Yellow Poster</title>
+        <script src="https://unpkg.com/css-doodle@0.15.3/css-doodle.min.js"></script>
+        <style>:root
+        {
+            --turquoise: #00fffc;
+            --yellow: #fffc00;
+            --pink: #fc00ff;
+        }
+
+        *,
+        html,
+        body {
+            box-sizing: content-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            align-items: center;
+            background: white;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            overflow: hidden;
+        }
+        css-doodle {
+            background: black;
+            box-shadow: 0 5vh 10vh hsla(0, 0%, 0%, 0.5);
+            border: 7vmin solid black;
+            position: fixed;
+            z-index: 1;
+            user-select: none;
+            overflow: hidden;
+        }
+        a {
+            bottom: 2vmin;
+            color: black;
+            font: 2vmin / 1 monospace;
+            position: fixed;
+            text-decoration: none;
+        }
+    </style>
+    </head>
+    <body>
+        <css-doodle click-to-update>
+            <style> 
+              @grid: 1 / 70vmin;
+              background: linear-gradient(
+                @rand(360deg),
+                @m(5, (
+                  @pick-n(#00fffc, #fffc00, #fc00ff)
+                    calc((@n - 1) * 100% / 2.5),
+                  @lp
+                    calc(@n * 100% / 5.5)
+                ))
+              );
+              clip-path: @shape(
+                split: 999;
+                r: cos(44t);
+              );
+            </style>
+          </css-doodle>
+    </body>
+    </html>    
+
